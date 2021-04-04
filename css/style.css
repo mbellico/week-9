@@ -19,7 +19,7 @@ h1 {
     font-weight: bolder;
     line-height: 1px;
 }
-.formContainer {
+#formContainer {
     position: relative;
     width: 100%;
     max-width: 500px;
@@ -115,5 +115,8 @@ h1 {
     color: #ff851b;
 }
 .validationFuntions {
-    display: none;
+    
+    font-size: 5px;
+    color: red;
+    letter-spacing: 1px; 
 }
