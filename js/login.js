@@ -3,12 +3,11 @@ var test = 'Validation results:';
 var loginForm = function () {
     if (document.querySelector('#formContainer')){
         console.log(test + 'Existing forms');
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'Wrong ButtonExisting form';
-    }
-    else {
+    } else {
         console.log(test + 'non-existing form');
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'non-existing form';
     }
 }
@@ -18,12 +17,11 @@ var amountOfFields = function() {
     var fieldsQuantity = fields.length;
     if (fieldsQuantity = 2){
         console.log(test + 'The amount of fields is correct');
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'The amount of fields is correct';
-    }
-    else {
+    } else {
         console.log(test + 'wrong quantity of fields');
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'Wrong quantity of fields';
     }
 }
@@ -32,12 +30,11 @@ var requiredFields = function(){
     var inputs = document.querySelectorAll('input').requiered;
     if (inputs = true){
         console.log(test + 'all required fields were found')
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'all required fields were found';
-    }
-    else {
+    } else {
         console.log(test + 'Required attributes missing');
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'Required attributes missing';
     }
 }
@@ -47,12 +44,11 @@ var labels = function(){
     var labels = document.querySelectorAll('label').for;
     if (inputs === labels){
         console.log(test + 'Inputs with associated labels');
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'Inputs with associated labels';
-    }
-    else {
+    } else {
         console.log(test + 'missing labels');
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'Missing Labels';
     }
 }
@@ -62,12 +58,11 @@ var validAnch = function (){
     var validAnchor = "register.html";
     if (anchor = validAnchor) {
         console.log(test + 'valid anchor');
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'Valid anchor';
-    }
-    else {
+    } else {
         console.log(test + 'wrong anchor');
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'Wrong anchor';
     }
 }
@@ -77,12 +72,11 @@ var btnsVerification = function (){
     var submitValue = 'login';
     if (submit = submitValue) {
         console.log(test + 'Right Button');
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'Right Button';
-    }
-    else {
+    } else {
         console.log(test + 'wrong button');
-        validationTests.display = 'flex';
+        validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'Wrong Button';
     }
 }
@@ -90,14 +84,13 @@ btnsVerification ();
 var lastVerif = function () {
     if (( loginForm = true) && (amountOfFields = true) && (requiredFields = true) &&
     (validAnch = true) && (btnsVerification = true)) {
-        console.log(test + 'test validations successful');
-        validationTests.display = 'flex';
-        validationTests.textContent = 'test' + "" + 'test validations successful';
-    }
-    else {
-        console.log(test + 'test validations unsuccessful');
-        validationTests.display= 'flex';
-        validationTests.textContent = 'Test validations unsuccessfull';
+        validationTests.display = 'block';
+        validationTests.style = 'green';
+        validationTests.textContent = 'test' + "" + 'every validation has passed';
+    } else {
+        validationTests.display = 'block';
+        validationTests.style = 'red';
+        validationTests.textContent = 'test' + 'test validations unsuccessfull';
     }
 }
 lastVerif();
