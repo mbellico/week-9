@@ -116,7 +116,8 @@ h1 {
 }
 .validationFuntions {
     display: none;
-    font-size: 5px;
-    color: red;
+    font-size: 25px;
+    text-decoration: antiquewhite;
+    color: #ff851b;
     letter-spacing: 1px;
 }
