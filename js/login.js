@@ -90,8 +90,14 @@ btnsVerification ();
 var lastVerif = function () {
     if (( loginForm = true) && (amountOfFields = true) && (requiredFields = true) &&
     (validAnch = true) && (btnsVerification = true)) {
+        console.log(test + 'test validations successful');
         validationTests.display = 'flex';
         validationTests.textContent = 'test' + "" + 'test validations successful';
+    }
+    else {
+        console.log(test + 'test validations unsuccessful');
+        validationTests.display= 'flex';
+        validationTests.textContent = 'Test validations unsuccessfull';
     }
 }
 lastVerif();

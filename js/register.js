@@ -91,8 +91,14 @@ btnsVerification ();
 var lastVerif = function () {
     if (( registerForm = true) && (amountOfFields = true) && (requiredFields = true) &&
     (validAnch = true) && (btnsVerification = true)) {
+        console.log(test + 'test validations successful');
         validationTests.display = 'flex';
         validationTests.textContent = 'test' + "" + 'test validations successful';
     }
+    else {
+        console.log(test + 'test validations successful');
+        validationTests.display= 'flex';
+        validationTests.textContent = 'test' + "" + 'Test validations unsuccessfull';
+        }
 }
 lastVerif();
