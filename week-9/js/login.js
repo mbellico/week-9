@@ -1,6 +1,6 @@
 var validationTests = document.getElementsByClassName('validationFuntions');
 var test = 'Validation results:';
-var registerForm = function () {
+var loginForm = function () {
     if (document.querySelector('#formContainer')){
         console.log(test + 'Existing forms');
         validationTests.display = 'block';
@@ -11,11 +11,11 @@ var registerForm = function () {
         validationTests.innerHTML = 'test' + "" + 'non-existing form';
     }
 }
-registerForm ();
+loginForm ();
 var amountOfFields = function() {
     var fields = document.querySelectorAll('input');
     var fieldsQuantity = fields.length;
-    if (fieldsQuantity = 4){
+    if (fieldsQuantity = 2){
         console.log(test + 'The amount of fields is correct');
         validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'The amount of fields is correct';
@@ -54,8 +54,8 @@ var labels = function(){
 }
 labels ();
 var validAnch = function (){
-    var anchor = document.getElementsByClassName('toLogin').href;
-    var validAnchor = "login.html";
+    var anchor = document.getElementsByClassName('submit').href;
+    var validAnchor = "register.html";
     if (anchor = validAnchor) {
         console.log(test + 'valid anchor');
         validationTests.display = 'block';
@@ -69,9 +69,8 @@ var validAnch = function (){
 validAnch ();
 var btnsVerification = function (){
     var submit = document.querySelector('.submit').nodeValue;
-    var resetKey = 'reset';
-    var signInKey = 'Sign in';
-    if ((submit = resetKey) && (submit = signInKey)){
+    var submitValue = 'login';
+    if (submit = submitValue) {
         console.log(test + 'Right Button');
         validationTests.display = 'block';
         validationTests.innerHTML = 'test' + "" + 'Right Button';
@@ -91,7 +90,7 @@ var lastVerif = function () {
     } else {
         validationTests.display = 'block';
         validationTests.style = 'red';
-        validationTests.textContent = 'Test' + 'test validations unsuccessfull';
+        validationTests.textContent = 'test' + 'test validations unsuccessfull';
     }
 }
 lastVerif();
