@@ -23,7 +23,7 @@ var formValidation = function(e) {
     switch (e.target.name) {
         case "nameAndLastName":
             if (regExp.fName.test(e.target.value)) {
-            fullName.style.color = 'green';
+            fullName.style.border = '3px solid green';
             fields [fullName] = true;
             } else {
             fullNameAlert.style.display= 'block';
@@ -32,7 +32,7 @@ var formValidation = function(e) {
         break;
         case "email":
             if (regExp.eMail.test(e.target.value)) {
-            password.style.color = 'green';
+            fullName.style.border = '3px solid green';
             fields [email] = true;
             } else {
             emailAlert.style.display= 'block';
@@ -42,7 +42,7 @@ var formValidation = function(e) {
     }
         case "passwordVerif":
             if (regExp.passWord.test(e.target.value)) {
-            password.style.color = 'green';
+            fullName.style.border = '3px solid green';
             fields [password] = true;
             } else {
             passwordAlert.style.display= 'block';
@@ -52,12 +52,12 @@ var formValidation = function(e) {
     }
         case "rPassword":
             if (e.target.value == password.value) {
-            repeatPassword.style.color = 'green';
+            fullName.style.border = '3px solid green';
             fields [rPassword] = true;
             } else {
             repeatPasswordAlert.style.display= 'block';
             fields [rPassword] = false;
-    }        
+    }
 }
 
 var focusForm = function (e) {
