@@ -1,100 +1,92 @@
+// form
 var formRegister = document.getElementById ('formRegister');
 var inputs = document.querySelectorAll('.input');
-var fullName = document.querySelector ('#fullName');
-var fullNameAlert = document.getElementsByClassName('fullNameAlert');
-var email = document.querySelector('#email');
-var emailAlert = document.getElementsByClassName('emailAlert');
-var password = document.querySelector('#password');
-var passwordAlert = document.getElementsByClassName('passwordAlert');
-var repeatPassword = document.querySelector('#repeatPassword');
-var repeatPasswordAlert = document.getElementsByClassName('repeatPassAlert');
-var regExp = {
-    fName: /^[a-zA-ZáéíóúÑñ]+(?:\s[a-zA-ZáéíóúÑñ]+)+$/;
-    eMail: /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9._+-]+\.[a-zA-Z]+$/;
-    passWord: /(^[a-zA-Z0-9]{8,})$/;
-}
-var fields = {
-    fullName: false;
-    email: false;
-    password: false;
-    rPassword: false;
-}
-var formValidation = function(e) {
-    switch (e.target.name) {
-        case "nameAndLastName":
-            if (regExp.fName.test(e.target.value)) {
-            fullName.style.border = '3px solid green';
-            fields [fullName] = true;
-            } else {
-            fullNameAlert.style.display= 'block';
-            fields [fullName] = false;
-            }
-        break;
-        case "email":
-            if (regExp.eMail.test(e.target.value)) {
-            fullName.style.border = '3px solid green';
-            fields [email] = true;
-            } else {
-            emailAlert.style.display= 'block';
-            fields [email] = false;
-            }
-        break;
-    }
-        case "passwordVerif":
-            if (regExp.passWord.test(e.target.value)) {
-            fullName.style.border = '3px solid green';
-            fields [password] = true;
-            } else {
-            passwordAlert.style.display= 'block';
-            fields [password] = false;
-            }
-        break;
-    }
-        case "rPassword":
-            if (e.target.value == password.value) {
-            fullName.style.border = '3px solid green';
-            fields [rPassword] = true;
-            } else {
-            repeatPasswordAlert.style.display= 'block';
-            fields [rPassword] = false;
+// fullName
+document.getElementById('fullName').addEventListener('blur', nameValidation);
+function nameValidation(){
+    var fName = /^[a-zA-ZáéíóúÑñ]+(?:\s[a-zA-ZáéíóúÑñ]+)+$/
+    var fullName = document.querySelector('#fullName');
+    var fullNameValue = document.querySelector('#fullName').value;
+    var fullNameAlert = document.getElementById('nameErrorAlert');
+    if(fullNameValue.match(fName)) {
+        fullName.style.border = '3px solid green';
+        fullNameAlert.style.display = 'none';
+    }else{
+        fullName.style.border = '3px solid red';
+        fullNameAlert.style.display = 'block';
     }
 }
-
-var focusForm = function (e) {
-    switch (e.target.name) {
-        case "nameAndLastName":
-            fullName.style.color = 'black';
-        break;
-        case "email":
-            email.style.color = 'black';
-        break;
-        case "passwordVerif":
-            password.style.color = 'black';
-        break;
-        case "rPassword":
-            repeatPassword.style.color = 'black';
+document.getElementById('fullName').addEventListener('onfocus', cleanName);
+function cleanName () {
+    document.getElementById('nameErrorAlert').className = 'fullNameAlert';
+    }
+// email
+document.getElementById('email').addEventListener('blur', emailValidation);
+function emailValidation(){
+    var eMail = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9._+-]+\.[a-zA-Z]+$/
+    var email = document.querySelector('#email');
+    var emailValue = document.querySelector('#email').value;
+    var emailAlert = document.getElementById('emailErrorAlert');
+    if(emailValue.match(eMail)) {
+        email.style.border = '3px solid green';
+        emailAlert.style.display = 'none';
+    }else{
+        email.style.border = '3px solid red';
+        emailAlert.style.display = 'block';
     }
 }
-inputs.forEach(function (input) {
-input.addEventListener('blur', formValidation);
-input.addEventListener('focus', focusForm);
-});
-
+document.getElementById('email').addEventListener('onfocus', clearEmail);
+function clearEmail(){
+}
+//password
+document.getElementById('password').addEventListener('blur', passwordValidation);
+function passwordValidation(){
+    var passWord = /(^[a-zA-Z0-9]{8,})$/
+    var password = document.querySelector('#password');
+    var passwordValue = document.querySelector('#password').value;
+    var passwordAlert = document.getElementById('passErrorAlert');
+    if(passwordValue.match(passWord)) {
+        password.style.border = '3px solid green';
+        passwordAlert.style.display = 'none';
+    }else{
+        password.style.border = '3px solid red';
+        passwordAlert.style.display = 'block';
+    }
+}
+document.getElementById('password').addEventListener('onfocus', clearPassword);
+function clearPassword(){
+}
+//Repeat password
+document.getElementById('repeatPassword').addEventListener('blur', repeatPasswordValidation);
+function repeatPasswordValidation(){
+    var repeatPassword = document.querySelector('#repeatPassword');
+    var repeatPasswordValue = document.querySelector('#repeatPassword').value;
+    var repeatPasswordAlert = document.getElementById('rPassErrorAlert');
+    if(repeatPasswordValue == password.value) {
+        repeatPassword.style.border = '3px solid green';
+        repeatPasswordAlert.style.display = 'none';
+    }else{
+        repeatPassword.style.border = '3px solid red';
+        repeatPasswordAlert.style.display = 'block';
+    }
+}
+document.getElementById('repeatPassword').addEventListener('onfocus', clearRepeatPassword);
+function clearRepeatPassword(){
+}
 formRegister.addEventListener('submit', function(e) {
     e.preventDefault ();
     var button = document.getElementById('signIn');
     button.addEventListener('click', validations);
-    var validations = document.getElementsByClassName('validationFuntions');
-    if (fields ['fullname'] && fields ['email'] && fields ['password'] && fields [repeatPassword]) {
-    validations.style.display = 'block';
-    validations.innerHTML = 'Registration process successful. Your users data is:' + "" 
-    + fullName.value + email.value + password+value;
+    var validations = document.getElementById('validationFuntions');
+    if ((nameValidation) && (emailValidation) && (passwordValidation) && (repeatPasswordValidation)) {
+    validations.style.display = 'flex';
+    validations.innerHTML = 'Registration process successful. Your users data is:' + " " + fullName.value + " " + email.value + " " + password.value;
     } else {
-    validations.style.display = 'block';
+    validations.style.display = 'flex';
     validations.innerHTML = 'Registration process failed. Please check your data and try again'
     }
 })
-async function getEmail(){
+async function getUsers(){
     fetch('https://jsonplaceholder.typicode.com/users?email=${email.value}')
     .then(function(response){
         return response.json();
@@ -102,6 +94,7 @@ async function getEmail(){
     .then(data => console.log(data))
     .catch()
 };
+var button = document.getElementsByClassName('submit');
 button.onclick = function() {
-    getEmail();
+    getUsers();
 };

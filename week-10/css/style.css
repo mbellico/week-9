@@ -41,6 +41,17 @@ input:focus {
     border-radius: 5px;
     color: #fff;
 }
+#validationFuntions, #validationFuntionsLogin {
+    display: none;
+    width: 100%;
+    align-items:stretch;
+    justify-content: center;
+    margin-left: : 30px;
+    margin-right: 30px;
+    margin-bottom: 100px;
+    font-size: 30px;
+    color: #ff851b;
+}
 .fullNameAlert, .emailAlert, .passwordAlert, .repeatPassAlert, .loginEmailAlert, .loginPassAlert {
     display: none;
     margin-bottom: 0;
@@ -132,12 +143,5 @@ input:focus {
 }
 .submit:active {
     border: 2px solid #0075d9;
-    color: #ff851b;
-}
-.validationFuntions {
-    display: none;
-    justify-content: center;
-    padding: 30px;
-    font-size: 20px;
     color: #ff851b;
 }
