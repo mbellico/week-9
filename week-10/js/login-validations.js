@@ -1,6 +1,10 @@
 //Form
 var formLogin = document.getElementById ('formLogin');
 var inputs = document.getElementsByClassName('input');
+var fields = {
+    email:false,
+    password: false,
+}
 //Email
 document.getElementById('email').addEventListener('blur', emailValidation);
 function emailValidation(){
@@ -11,9 +15,11 @@ function emailValidation(){
     if(emailValue.match(eMail)) {
         email.style.border = '3px solid green';
         emailAlert.style.display = 'none';
+        fields['email'] = true;
     }else{
         email.style.border = '3px solid red';
         emailAlert.style.display = 'block';
+        fields['email'] = false;
     }
 }
 document.getElementById('email').addEventListener('onfocus', clearEmail);
@@ -29,9 +35,11 @@ function passwordValidation(){
     if(passwordValue.match(passWord)) {
         password.style.border = '3px solid green';
         passwordAlert.style.display = 'none';
+        fields['password'] = true;
     }else{
         password.style.border = '3px solid red';
         passwordAlert.style.display = 'block';
+        fields['password'] = false;
     }
 }
 document.getElementById('password').addEventListener('onfocus', clearPassword);
@@ -42,23 +50,14 @@ formLogin.addEventListener('submit', function(e) {
 var button = document.getElementById('loginBtn');
 button.addEventListener('click', validations);
 var validations = document.getElementById('validationFuntionsLogin');
-if ((emailValidation) && (passwordValidation)) {
+if (fields['email'] && fields ['password']) {
     validations.style.display = 'flex';
     validations.innerHTML = 'Your login data is:' + " " + email.value + " " + password.value;
+    fetch('https://jsonplaceholder.typicode.com/users?email=${email.value}')
+    .then(response => response.json())
+    .then(data => console.log(data));
 } else {
     validations.style.display = 'flex';
     validations.innerHTML = 'Email or Password values are wrong. Please try again'
-}
-})
-async function getUsers(){
-    fetch('https://jsonplaceholder.typicode.com/users?email=${email.value}')
-    .then(function(response){
-        return response.json();
-    })
-    .then(data => console.log(data))
-    .catch()
-};
-var button = document.getElementsByClassName('submit');
-button.onclick = function() {
-    getUsers();
-};
+    }
+});
