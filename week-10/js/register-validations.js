@@ -18,16 +18,18 @@ function nameValidation(){
         fullName.style.border = '3px solid green';
         fullNameAlert.style.display = 'none';
         fields['name'] = true;
-
     }else{
         fullName.style.border = '3px solid red';
         fullNameAlert.style.display = 'block';
         fields['name'] = false;
     }
 }
-document.getElementById('fullName').addEventListener('onfocus', cleanName);
-function cleanName () {
-    document.getElementById('nameErrorAlert').className = 'fullNameAlert';
+document.getElementById('fullName').addEventListener('focus', clearName);
+function clearName () {
+    var name = document.getElementById('fullName');
+    var nameAlert = document.getElementById('nameErrorAlert');
+    name.value= '';
+    nameAlert.style.display= 'none';
     }
 // email
 document.getElementById('email').addEventListener('blur', emailValidation);
@@ -46,9 +48,13 @@ function emailValidation(){
         fields['name'] = false;
     }
 }
-document.getElementById('email').addEventListener('onfocus', clearEmail);
-function clearEmail(){
-}
+document.getElementById('email').addEventListener('focus', clearEmail);
+function clearEmail () {
+    var emailFocus = document.getElementById('email');
+    var emailAlertFocus = document.getElementById('emailErrorAlert');
+    emailFocus.value= '';
+    emailAlertFocus.style.display= 'none';
+    }
 //password
 document.getElementById('password').addEventListener('blur', passwordValidation);
 function passwordValidation(){
@@ -66,9 +72,13 @@ function passwordValidation(){
         fields['password'] = false;
     }
 }
-document.getElementById('password').addEventListener('onfocus', clearPassword);
-function clearPassword(){
-}
+document.getElementById('password').addEventListener('focus', clearPassword);
+function clearPassword () {
+    var passwordFocus = document.getElementById('password');
+    var passwordAlertFocus = document.getElementById('passErrorAlert');
+    passwordFocus.value= '';
+    passwordAlertFocus.style.display= 'none';
+    }
 //Repeat password
 document.getElementById('repeatPassword').addEventListener('blur', repeatPasswordValidation);
 function repeatPasswordValidation(){
@@ -84,10 +94,14 @@ function repeatPasswordValidation(){
         repeatPasswordAlert.style.display = 'block';
         fields['rPassword'] = false;
     }
-}
-document.getElementById('repeatPassword').addEventListener('onfocus', clearRepeatPassword);
-function clearRepeatPassword(){
-}
+document.getElementById('repeatPassword').addEventListener('focus', clearRepeatPassword);
+function clearRepeatPassword () {
+    var rPasswordFocus = document.getElementById('repeatPassword');
+    var rPasswordAlertFocus = document.getElementById('rPassErrorAlert');
+    rPasswordFocus.value= '';
+    rPasswordAlertFocus.style.display= 'none';
+    }
+};
 formRegister.addEventListener('submit', function(e) {
     e.preventDefault ();
     var button = document.getElementById('signIn');

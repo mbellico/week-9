@@ -22,8 +22,12 @@ function emailValidation(){
         fields['email'] = false;
     }
 }
-document.getElementById('email').addEventListener('onfocus', clearEmail);
-function clearEmail(){
+document.getElementById('email').addEventListener('focus', clearEmail);
+function clearEmail () {
+    var emailFocus = document.getElementById('email');
+    var emailAlertFocus = document.getElementById('emailErrorAlert');
+    emailFocus.value= '';
+    emailAlertFocus.style.display= 'none';
 }
 //password
 document.getElementById('password').addEventListener('blur', passwordValidation);
@@ -42,8 +46,12 @@ function passwordValidation(){
         fields['password'] = false;
     }
 }
-document.getElementById('password').addEventListener('onfocus', clearPassword);
-function clearPassword(){
+document.getElementById('password').addEventListener('focus', clearPassword);
+function clearPassword () {
+    var passwordFocus = document.getElementById('password');
+    var passwordAlertFocus = document.getElementById('passErrorAlert');
+    passwordFocus.value= '';
+    passwordAlertFocus.style.display= 'none';
 }
 formLogin.addEventListener('submit', function(e) {
     e.preventDefault ();
