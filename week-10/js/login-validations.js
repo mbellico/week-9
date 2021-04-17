@@ -61,11 +61,26 @@ var validations = document.getElementById('validationFuntionsLogin');
 if (fields['email'] && fields ['password']) {
     validations.style.display = 'flex';
     validations.innerHTML = 'Your login data is:' + " " + email.value + " " + password.value;
-    fetch('https://jsonplaceholder.typicode.com/users?email=${email.value}')
-    .then(response => response.json())
-    .then(data => console.log(data));
+    sendLoginForm();
 } else {
     validations.style.display = 'flex';
     validations.innerHTML = 'Email or Password values are wrong. Please try again'
     }
 });
+function sendLoginForm(){
+    fetch('http://localhost:4000/login',{
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body:JSON.stringify({
+            email:email.value,
+            password: password.value,
+        })
+    })
+    .then (response => response.json())
+    .then (data => console.log(data))
+    .catch(function(error){
+        console.log('Error trying to send the data')
+    })
+}

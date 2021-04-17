@@ -110,11 +110,26 @@ formRegister.addEventListener('submit', function(e) {
     if (fields ['name'] && fields ['email'] && fields ['password'] && fields ['rPassword']) {
     validations.style.display = 'flex';
     validations.innerHTML = 'Registration process successful. Your users data is:' + " " + fullName.value + " " + email.value + " " + password.value;
-    fetch('https://jsonplaceholder.typicode.com/users?email=${email.value}')
-    .then(response => response.json())
-    .then(data => console.log(data));
+    sendRegisterForm()
     } else {
     validations.style.display = 'flex';
     validations.innerHTML = 'Registration process failed. Please check your data and try again'
     }
 })
+function sendRegisterForm(){
+    fetch('http://localhost:4000/register',{
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body:JSON.stringify({
+            name: fullName.value,
+            email:email.value,
+            password: password.value,
+        })
+    })
+    .then (response => response.json())
+    .then (data => console.log(data))
+    .catch(function(error){
+        console.log('Error trying to send the data')
+    })
